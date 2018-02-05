@@ -17,12 +17,21 @@
 <script>
 require([
   "esri/Map",
+  "esri/layers/TileLayer",  // Require the TileLayer module
   "esri/views/MapView",
   "dojo/domReady!"
-], function(Map, MapView){
-  var map = new Map({
-    basemap: "streets"
+], function(Map, TileLayer, MapView){
+  
+  var utah_layer = new TileLayer({
+      url: "http://geoserver2.byu.edu/arcgis/rest/services/sherry/UtahCountyshp/MapServer"
+    });
+	var map = new Map({
+    basemap: "streets",
+	layers:[utah_layer]
   });
+  
+  map.layers.add(utah_layer);
+	
   var view = new MapView({
     container: "viewDiv",  // Reference to the scene div created in step 5
     map: map,  // Reference to the map object created before the scene
