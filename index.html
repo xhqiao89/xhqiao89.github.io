@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+  <title>Load a basic WebMap - 4.6</title>
+  <style>
+    html,
+    body,
+    #viewDiv {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+
+  <script src="https://js.arcgis.com/4.6/"></script>
+
+  <script>
+    require([
+      "esri/views/MapView",
+      "esri/WebMap",
+      "dojo/domReady!"
+    ], function(
+      MapView, WebMap
+    ) {
+
+      var webmap = new WebMap({
+        portalItem: { // autocasts as new PortalItem()
+          id: "f2e9b762544945f390ca4ac3671cfa72"
+        }
+      });
+
+      var view = new MapView({
+        map: webmap,
+        container: "viewDiv"
+      });
+    });
+  </script>
+</head>
+
 <body>
-
-<h1>Hello!</h1>
-
-<p>First github pages demo !hahahahahhaha</p>
-
+  <div id="viewDiv"></div>
 </body>
+
 </html>
