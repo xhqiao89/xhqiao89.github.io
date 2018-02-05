@@ -25,9 +25,9 @@ require([
   var utah_layer = new TileLayer({
       url: "http://geoserver2.byu.edu/arcgis/rest/services/sherry/UtahCountyshp/MapServer"
     });
-	var map = new Map({
-    basemap: "streets",
-	layers:[utah_layer]
+	
+  var map = new Map({
+    basemap: "streets"
   });
   
   map.layers.add(utah_layer);
