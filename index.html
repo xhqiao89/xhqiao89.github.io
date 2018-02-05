@@ -17,19 +17,19 @@
 <script>
 require([
   "esri/Map",
-  "esri/layers/TileLayer",  // Require the TileLayer module
+  "esri/layers/MapImageLayer",  // Require the TileLayer module
   "esri/views/MapView",
   "dojo/domReady!"
-], function(Map, TileLayer, MapView){
+], function(Map, MapImageLayer, MapView){
   
-  var utah_layer = new TileLayer({
-      url: "http://geoserver2.byu.edu/arcgis/rest/services/sherry/UtahCountyshp/MapServer"
-    });
-	
   var map = new Map({
     basemap: "streets"
   });
   
+  var utah_layer = new MapImageLayer({
+    url: "http://geoserver2.byu.edu/arcgis/rest/services/sherry/UtahCountyshp/MapServer"
+  });
+	
   map.layers.add(utah_layer);
 	
   var view = new MapView({
