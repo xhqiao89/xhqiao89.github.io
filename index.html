@@ -26,15 +26,21 @@ require([
     basemap: "streets"
   });
   
-  var utah_layer = new MapImageLayer({
-    url: "https://geoserver2.byu.edu/arcgis/rest/services/sherry/UtahCountyshp/MapServer"
+  var utah_shp_layer = new MapImageLayer({
+    url: "https://geoserver2.byu.edu/arcgis/rest/services/The_SnowMen/Utah_Counties/MapServer"
+  });
+  var utah_dem_layer = new MapImageLayer({
+    url: "https://geoserver2.byu.edu/arcgis/rest/services/TeamWon/utah_raster/MapServer"
   });
 	
-  map.layers.add(utah_layer);
+  map.layers.add(utah_shp_layer);
+  map.layers.add(utah_dem_layer);
 	
   var view = new MapView({
     container: "viewDiv", 
-    map: map
+    map: map,
+	center: [-111.1, 39.1],	
+	zoom: 6
   });
 });
 </script>
