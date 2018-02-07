@@ -27,10 +27,10 @@ require([
   });
   
   var utah_shp_layer = new MapImageLayer({
-    url: "https://geoserver2.byu.edu/arcgis/rest/services/The_SnowMen/Utah_Counties/MapServer"
+    url: "http://geoserver2.byu.edu/arcgis/rest/services/The_SnowMen/Utah_Counties/MapServer"
   });
   var utah_dem_layer = new MapImageLayer({
-    url: "https://geoserver2.byu.edu/arcgis/rest/services/TeamWon/utah_raster/MapServer"
+    url: "http://geoserver2.byu.edu/arcgis/rest/services/TeamWon/utah_raster/MapServer"
   });
 	
   map.layers.add(utah_shp_layer);
