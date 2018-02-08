@@ -1,48 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-  html, body, #viewDiv {
-    padding: 0;
-    margin: 0;
-    height: 100%;
-    width: 100%;
-  }
-</style>
-<link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
-<script src="https://js.arcgis.com/4.6/"></script>
+  <title>Demo</title>
+  <style>
+  html, body, #mapDiv {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	}
+  </style>
+  <link rel="stylesheet" href="https://js.arcgis.com/3.23/esri/css/esri.css">
+  <script src="https://js.arcgis.com/3.23/"></script>
 <script>
-require([
-  "esri/Map",
-  "esri/layers/MapImageLayer",
-  "esri/views/MapView",
-  "dojo/domReady!"
-], function(Map, MapImageLayer, MapView){
-  
-  var map = new Map({
-    basemap: "streets"
-  });
-  
-  var utah_shp_layer = new MapImageLayer({
-    url: "http://geoserver2.byu.edu/arcgis/rest/services/The_SnowMen/Utah_Counties/MapServer"
-  });
-  var utah_dem_layer = new MapImageLayer({
-    url: "http://geoserver2.byu.edu/arcgis/rest/services/TeamWon/utah_raster/MapServer"
-  });
-	
-  map.layers.add(utah_shp_layer);
-  map.layers.add(utah_dem_layer);
-	
-  var view = new MapView({
-    container: "viewDiv", 
-    map: map,
-	center: [-111.1, 39.1],	
-	zoom: 6
-  });
-});
+	require([
+	  "esri/map",
+	  "esri/layers/ArcGISDynamicMapServiceLayer", 
+	  "dojo/domReady!"
+	], function(Map, ArcGISDynamicMapServiceLayer){
+	  
+	  var map = new Map("mapDiv", {
+		center: [-111.1, 39.1],
+		zoom: 6,
+		basemap: "topo"
+	  });
+	  
+	  var utah_shp_layer = new ArcGISDynamicMapServiceLayer("http://geoserver2.byu.edu/arcgis/rest/services/The_SnowMen/Utah_Counties/MapServer", {
+	  });
+	  
+	  var utah_dem_layer = new ArcGISDynamicMapServiceLayer("http://geoserver2.byu.edu/arcgis/rest/services/TeamWon/utah_raster/MapServer", {
+	  });
+		
+	  map.addLayer(utah_shp_layer);
+	  map.addLayer(utah_dem_layer);
+	  
+	});
 </script>
 </head>
 <body>
-  <div id="viewDiv"></div>
+  <div id="mapDiv"></div>
 </body>
 </html>
